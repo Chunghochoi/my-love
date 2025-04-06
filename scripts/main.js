@@ -1,0 +1,166 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Music player functionality
+    const musicToggle = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('bg-music');
+    
+    musicToggle.addEventListener('click', function() {
+        if (bgMusic.paused) {
+            bgMusic.play();
+            musicToggle.textContent = '🎵 Pause Music';
+        } else {
+            bgMusic.pause();
+            musicToggle.textContent = '🎵 Play Music';
+        }
+    });
+    
+    // Try to autoplay music (may not work due to browser policies)
+    document.body.addEventListener('click', function() {
+        if (bgMusic.paused) {
+            bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+        }
+    }, { once: true });
+    
+    // Media upload functionality
+    const uploadForm = document.getElementById('upload-form');
+    const mediaInput = document.getElementById('media-input');
+    const uploadBtn = document.querySelector('.upload-btn');
+    const uploadProgress = document.getElementById('upload-progress');
+    const mediaGallery = document.getElementById('media-gallery');
+    
+    // Load saved media from localStorage
+    loadMedia();
+    
+    uploadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        mediaInput.click();
+    });
+    
+    mediaInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            uploadFiles(this.files);
+        }
+    });
+    
+    function uploadFiles(files) {
+        uploadProgress.style.display = 'block';
+        uploadProgress.firstElementChild.style.width = '0%';
+        
+        // Simulate upload progress (in a real app, this would be an actual upload to a server)
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += 5;
+            uploadProgress.firstElementChild.style.width = `${progress}%`;
+            
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                setTimeout(() => {
+                    uploadProgress.style.display = 'none';
+                    processFiles(files);
+                }, 500);
+            }
+        }, 100);
+    }
+    
+    function processFiles(files) {
+        Array.from(files).forEach(file => {
+            if (!file.type.match('image.*') && !file.type.match('video.*')) return;
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const mediaItem = createMediaItem(file.type, e.target.result);
+                mediaGallery.appendChild(mediaItem);
+                
+                // Save to localStorage
+                saveMediaToLocalStorage(file.type, e.target.result);
+            };
+            
+            if (file.type.match('image.*')) {
+                reader.readAsDataURL(file);
+            } else if (file.type.match('video.*')) {
+                // For videos, we'll just use a placeholder as we can't properly save them to localStorage
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+    
+    function createMediaItem(type, src) {
+        const mediaItem = document.createElement('div');
+        mediaItem.className = 'media-item';
+        
+        if (type.match('image.*')) {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = 'Memory image';
+            mediaItem.appendChild(img);
+        } else if (type.match('video.*')) {
+            const video = document.createElement('video');
+            video.src = src;
+            video.controls = true;
+            video.muted = true;
+            mediaItem.appendChild(video);
+        }
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.innerHTML = '&times;';
+        deleteBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mediaItem.remove();
+            removeMediaFromLocalStorage(src);
+        });
+        mediaItem.appendChild(deleteBtn);
+        
+        return mediaItem;
+    }
+    
+    function saveMediaToLocalStorage(type, data) {
+        let media = JSON.parse(localStorage.getItem('loveJourneyMedia')) || [];
+        media.push({ type, data });
+        localStorage.setItem('loveJourneyMedia', JSON.stringify(media));
+    }
+    
+    function removeMediaFromLocalStorage(data) {
+        let media = JSON.parse(localStorage.getItem('loveJourneyMedia')) || [];
+        media = media.filter(item => item.data !== data);
+        localStorage.setItem('loveJourneyMedia', JSON.stringify(media));
+    }
+    
+    function loadMedia() {
+        const media = JSON.parse(localStorage.getItem('loveJourneyMedia')) || [];
+        media.forEach(item => {
+            const mediaItem = createMediaItem(item.type, item.data);
+            mediaGallery.appendChild(mediaItem);
+        });
+    }
+    
+    // Add some sample images on first visit
+    if (!localStorage.getItem('loveJourneyMedia') && mediaGallery.children.length === 0) {
+        const sampleImages = [
+            'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+        ];
+        
+        sampleImages.forEach(src => {
+            const mediaItem = document.createElement('div');
+            mediaItem.className = 'media-item';
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = 'Sample memory';
+            mediaItem.appendChild(img);
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '&times;';
+            deleteBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mediaItem.remove();
+            });
+            mediaItem.appendChild(deleteBtn);
+            
+            mediaGallery.appendChild(mediaItem);
+        });
+    }
+});

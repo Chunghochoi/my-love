@@ -1,0 +1,40 @@
+<!DOCTYPE html>  
+<html lang="vi">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Đếm Ngày Yêu Nhau</title>  
+    <link rel="stylesheet" href="style.css">  
+    <script src="script.js" defer></script>  
+</head>  
+<body>  
+    <div class="container">  
+        <header>  
+            <h1>Đếm Ngày Yêu Nhau</h1>  
+            <audio controls autoplay loop>  
+                <source src="assets/music.mp3" type="audio/mp3">  
+                Your browser does not support the audio tag.  
+            </audio>  
+        </header>  
+
+        <div class="countdown-timer">  
+            <h2 id="countdown"></h2>  
+        </div>  
+
+        <div class="pet-avatar">  
+            <img id="pet" src="assets/pet-image.png" alt="Thú Cưng Ảo">  
+        </div>  
+
+        <div class="media-upload">  
+            <h2>Chia Sẻ Ảnh & Video</h2>  
+            <input type="file" id="fileInput" multiple accept="image/*,video/*">  
+            <div id="mediaGallery"></div>  
+        </div>  
+
+        <div class="highlights">  
+            <h2>Các Khoảnh Khắc Đáng Nhớ</h2>  
+            <ul id="highlightsList"></ul>  
+        </div>  
+    </div>  
+</body>  
+</html>  
