@@ -3,471 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Journey</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffe6e6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background-color: #ff4d4d;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-radius: 0 0 15px 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        
-        .love-counter {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .counter-display {
-            font-size: 2em;
-            color: #ff4d4d;
-            margin: 10px 0;
-        }
-        
-        .pet-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .pet {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto;
-            background-color: #ffcccb;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3em;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .pet:hover {
-            transform: scale(1.1);
-        }
-        
-        .pet-status {
-            margin-top: 10px;
-            font-style: italic;
-        }
-        
-        .memories-section {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .memory-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .memory-form input, .memory-form textarea {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .memory-form button {
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
-        .memories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .memory-card {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .memory-media {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .memory-content {
-            padding: 15px;
-        }
-        
-        .memory-date {
-            font-size: 0.8em;
-            color: #888;
-        }
-        
-        .highlights-section {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .highlight-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        .highlight-item {
-            background-color: #fff0f0;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .highlight-form {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .highlight-form input {
-            flex-grow: 1;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .highlight-form button {
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #888;
-            font-size: 0.9em;
-        }
-    </style>
+    <title>Our Love Story - 31/12/2023</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css" media="screen and (max-width: 768px)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Hành Trình Yêu Của Chúng Ta</h1>
-            <p>Lưu giữ mọi khoảnh khắc đáng nhớ</p>
-        </div>
-    </header>
+    <div class="background-overlay"></div>
+    <audio id="bgMusic" loop>
+        <source src="assets/love-song.mp3" type="audio/mpeg">
+    </audio>
     
-    <div class="container">
-        <section class="love-counter">
-            <h2>Chúng ta yêu nhau được</h2>
-            <div class="counter-display" id="loveDays">0 ngày</div>
-            <div id="loveAnniversaries"></div>
-            <input type="date" id="startDate" value="">
-            <button onclick="updateLoveCounter()">Cập nhật ngày yêu</button>
-        </section>
-        
-        <section class="pet-container">
-            <h2>Thú cưng của đôi ta</h2>
-            <div class="pet" onclick="petInteraction()">🐶</div>
-            <p class="pet-status" id="petStatus">Hạnh phúc: 100%</p>
-            <div id="petActions">
-                <button onclick="feedPet()">Cho ăn</button>
-                <button onclick="playWithPet()">Chơi cùng</button>
-                <button onclick="cleanPet()">Tắm rửa</button>
-            </div>
-        </section>
-        
-        <section class="highlights-section">
-            <h2>Những khoảnh khắc đáng nhớ</h2>
-            <ul class="highlight-list" id="highlightList">
-                <!-- Highlights will be added here -->
-            </ul>
-            <div class="highlight-form">
-                <input type="text" id="newHighlight" placeholder="Thêm khoảnh khắc đáng nhớ...">
-                <button onclick="addHighlight()">Thêm</button>
-            </div>
-        </section>
-        
-        <section class="memories-section">
-            <h2>Khoảnh khắc của chúng ta</h2>
-            <form class="memory-form" id="memoryForm">
-                <input type="text" id="memoryTitle" placeholder="Tiêu đề" required>
-                <textarea id="memoryDescription" placeholder="Mô tả" rows="3"></textarea>
-                <input type="date" id="memoryDate" required>
-                <input type="file" id="memoryFile" accept="image/*,video/*" required>
-                <button type="button" onclick="addMemory()">Lưu kỷ niệm</button>
-            </form>
-            
-            <div class="memories-grid" id="memoriesGrid">
-                <!-- Memories will be added here -->
-            </div>
-        </section>
+    <div class="music-control" onclick="toggleMusic()">
+        <span id="musicIcon">🎵</span>
     </div>
     
+    <header>
+        <h1>Chuyện Tình Chúng Ta</h1>
+        <p class="subtitle">Bắt đầu từ 0:13 ngày 31/12/2023</p>
+    </header>
+    
+    <main class="container">
+        <section class="love-counter glassmorphism">
+            <div class="counter-display">
+                <div class="time-unit">
+                    <span id="years">0</span>
+                    <small>Năm</small>
+                </div>
+                <div class="time-unit">
+                    <span id="months">0</span>
+                    <small>Tháng</small>
+                </div>
+                <div class="time-unit">
+                    <span id="days">0</span>
+                    <small>Ngày</small>
+                </div>
+                <div class="time-unit">
+                    <span id="hours">0</span>
+                    <small>Giờ</small>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes">0</span>
+                    <small>Phút</small>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds">0</span>
+                    <small>Giây</small>
+                </div>
+            </div>
+            <div class="anniversary-display" id="anniversaries"></div>
+        </section>
+        
+        <section class="pet-container glassmorphism">
+            <h2>Thú Cưng Tình Yêu</h2>
+            <div class="pet" id="virtualPet">
+                <div class="pet-sprite"></div>
+                <div class="pet-hearts"></div>
+            </div>
+            <div class="pet-status">
+                <div class="status-bar happiness">
+                    <div class="status-fill" style="width: 100%"></div>
+                    <span>Hạnh phúc: 100%</span>
+                </div>
+                <div class="status-bar hunger">
+                    <div class="status-fill" style="width: 0%"></div>
+                    <span>Đói: 0%</span>
+                </div>
+                <div class="status-bar energy">
+                    <div class="status-fill" style="width: 100%"></div>
+                    <span>Năng lượng: 100%</span>
+                </div>
+            </div>
+            <div class="pet-actions">
+                <button class="btn-pet-action feed" onclick="feedPet()">🍗 Cho ăn</button>
+                <button class="btn-pet-action play" onclick="playWithPet()">🎾 Chơi cùng</button>
+                <button class="btn-pet-action clean" onclick="cleanPet()">🛁 Tắm rửa</button>
+                <button class="btn-pet-action sleep" onclick="putPetToSleep()">🌙 Ru ngủ</button>
+            </div>
+        </section>
+        
+        <section class="memories-section glassmorphism">
+            <h2>Kho Báu Tình Yêu</h2>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">+</div>
+                <p>Kéo thả ảnh/video vào đây hoặc click để chọn</p>
+                <input type="file" id="memoryUpload" accept="image/*,video/*" multiple>
+            </div>
+            <div class="memory-form" id="memoryForm" style="display: none;">
+                <input type="text" id="memoryTitle" placeholder="Tiêu đề kỷ niệm" required>
+                <textarea id="memoryDescription" placeholder="Mô tả kỷ niệm..."></textarea>
+                <input type="date" id="memoryDate" required>
+                <div class="preview-container" id="previewContainer"></div>
+                <button class="btn-save" onclick="saveMemory()">Lưu Kỷ Niệm</button>
+            </div>
+            
+            <div class="memories-grid" id="memoriesGrid"></div>
+        </section>
+        
+        <section class="highlights-section glassmorphism">
+            <h2>Mốc Quan Trọng</h2>
+            <div class="highlight-form">
+                <input type="text" id="newHighlight" placeholder="Thêm mốc quan trọng...">
+                <button class="btn-add" onclick="addHighlight()">Thêm</button>
+            </div>
+            <div class="timeline" id="timeline"></div>
+        </section>
+    </main>
+    
     <footer>
-        <p>Made with ❤️ for us</p>
+        <p>Made with ❤️ by [Tên của bạn] & [Tên người yêu]</p>
     </footer>
     
-    <script>
-        // Love Counter
-        let startDate = localStorage.getItem('loveStartDate');
-        if (startDate) {
-            document.getElementById('startDate').value = startDate;
-            updateLoveCounter();
-        }
-        
-        function updateLoveCounter() {
-            const selectedDate = new Date(document.getElementById('startDate').value);
-            if (isNaN(selectedDate.getTime())) {
-                alert('Vui lòng chọn ngày bắt đầu');
-                return;
-            }
-            
-            startDate = document.getElementById('startDate').value;
-            localStorage.setItem('loveStartDate', startDate);
-            
-            const today = new Date();
-            const start = new Date(startDate);
-            const diffTime = today - start;
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            
-            document.getElementById('loveDays').textContent = `${diffDays} ngày`;
-            
-            // Calculate anniversaries
-            const anniversaries = document.getElementById('loveAnniversaries');
-            anniversaries.innerHTML = '';
-            
-            const months = Math.floor(diffDays / 30);
-            const years = Math.floor(diffDays / 365);
-            
-            if (months > 0) {
-                const monthAnniversary = document.createElement('p');
-                monthAnniversary.textContent = `${months} tháng yêu nhau`;
-                anniversaries.appendChild(monthAnniversary);
-            }
-            
-            if (years > 0) {
-                const yearAnniversary = document.createElement('p');
-                yearAnniversary.textContent = `${years} năm yêu nhau`;
-                anniversaries.appendChild(yearAnniversary);
-            }
-        }
-        
-        // Virtual Pet
-        let petHappiness = 100;
-        let petHunger = 0;
-        let petCleanliness = 100;
-        
-        function updatePetStatus() {
-            document.getElementById('petStatus').textContent = 
-                `Hạnh phúc: ${petHappiness}% | Đói: ${petHunger}% | Sạch sẽ: ${petCleanliness}%`;
-            
-            // Pet appearance changes based on status
-            const pet = document.querySelector('.pet');
-            if (petHappiness < 30 || petHunger > 70 || petCleanliness < 30) {
-                pet.textContent = '😢';
-                pet.style.backgroundColor = '#ff9999';
-            } else {
-                pet.textContent = '🐶';
-                pet.style.backgroundColor = '#ffcccb';
-            }
-        }
-        
-        function petInteraction() {
-            petHappiness = Math.min(100, petHappiness + 5);
-            updatePetStatus();
-        }
-        
-        function feedPet() {
-            petHunger = Math.max(0, petHunger - 30);
-            petHappiness = Math.min(100, petHappiness + 10);
-            updatePetStatus();
-        }
-        
-        function playWithPet() {
-            petHappiness = Math.min(100, petHappiness + 20);
-            petHunger = Math.min(100, petHunger + 10);
-            updatePetStatus();
-        }
-        
-        function cleanPet() {
-            petCleanliness = 100;
-            petHappiness = Math.min(100, petHappiness + 5);
-            updatePetStatus();
-        }
-        
-        // Pet status decay over time
-        setInterval(() => {
-            petHappiness = Math.max(0, petHappiness - 1);
-            petHunger = Math.min(100, petHunger + 2);
-            petCleanliness = Math.max(0, petCleanliness - 1);
-            updatePetStatus();
-        }, 60000); // Every minute
-        
-        updatePetStatus();
-        
-        // Highlights
-        let highlights = JSON.parse(localStorage.getItem('highlights')) || [];
-        
-        function renderHighlights() {
-            const list = document.getElementById('highlightList');
-            list.innerHTML = '';
-            
-            highlights.forEach((highlight, index) => {
-                const item = document.createElement('li');
-                item.className = 'highlight-item';
-                item.innerHTML = `
-                    <span>${highlight.text}</span>
-                    <button onclick="removeHighlight(${index})">Xóa</button>
-                `;
-                list.appendChild(item);
-            });
-        }
-        
-        function addHighlight() {
-            const input = document.getElementById('newHighlight');
-            const text = input.value.trim();
-            
-            if (text) {
-                highlights.push({
-                    text: text,
-                    date: new Date().toLocaleDateString()
-                });
-                
-                localStorage.setItem('highlights', JSON.stringify(highlights));
-                input.value = '';
-                renderHighlights();
-            }
-        }
-        
-        function removeHighlight(index) {
-            highlights.splice(index, 1);
-            localStorage.setItem('highlights', JSON.stringify(highlights));
-            renderHighlights();
-        }
-        
-        renderHighlights();
-        
-        // Memories
-        let memories = JSON.parse(localStorage.getItem('memories')) || [];
-        
-        function renderMemories() {
-            const grid = document.getElementById('memoriesGrid');
-            grid.innerHTML = '';
-            
-            memories.forEach((memory, index) => {
-                const card = document.createElement('div');
-                card.className = 'memory-card';
-                
-                let mediaElement;
-                if (memory.fileType.startsWith('image')) {
-                    mediaElement = `<img src="${memory.fileData}" class="memory-media" alt="${memory.title}">`;
-                } else {
-                    mediaElement = `
-                        <video controls class="memory-media">
-                            <source src="${memory.fileData}" type="${memory.fileType}">
-                            Trình duyệt không hỗ trợ video.
-                        </video>
-                    `;
-                }
-                
-                card.innerHTML = `
-                    ${mediaElement}
-                    <div class="memory-content">
-                        <h3>${memory.title}</h3>
-                        <p class="memory-date">${memory.date}</p>
-                        <p>${memory.description}</p>
-                        <button onclick="removeMemory(${index})">Xóa</button>
-                    </div>
-                `;
-                
-                grid.appendChild(card);
-            });
-        }
-        
-        function addMemory() {
-            const title = document.getElementById('memoryTitle').value.trim();
-            const description = document.getElementById('memoryDescription').value.trim();
-            const date = document.getElementById('memoryDate').value;
-            const fileInput = document.getElementById('memoryFile');
-            
-            if (!title || !date || fileInput.files.length === 0) {
-                alert('Vui lòng điền đầy đủ thông tin');
-                return;
-            }
-            
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                const memory = {
-                    title: title,
-                    description: description,
-                    date: date,
-                    fileType: file.type,
-                    fileData: e.target.result
-                };
-                
-                memories.push(memory);
-                localStorage.setItem('memories', JSON.stringify(memories));
-                
-                // Reset form
-                document.getElementById('memoryForm').reset();
-                renderMemories();
-            };
-            
-            reader.readAsDataURL(file);
-        }
-        
-        function removeMemory(index) {
-            memories.splice(index, 1);
-            localStorage.setItem('memories', JSON.stringify(memories));
-            renderMemories();
-        }
-        
-        renderMemories();
-    </script>
+    <script src="js/main.js"></script>
+    <script src="js/pet-animation.js"></script>
 </body>
 </html>
