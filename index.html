@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Eternal Love</title>
+    <title>Hành Trình Tình Yêu Của Chúng Ta</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/animations.css">
     <link rel="stylesheet" media="(max-width: 768px)" href="styles/mobile.css">
@@ -17,12 +17,12 @@
     </div>
     
     <header class="glass-header">
-        <h1><i class="fas fa-heart"></i> Our Love Story <i class="fas fa-heart"></i></h1>
+        <h1><i class="fas fa-heart"></i> Chuyện Tình Chúng Mình <i class="fas fa-heart"></i></h1>
         <div class="music-controls">
-            <button id="music-toggle"><i class="fas fa-music"></i> Play Our Song</button>
+            <button id="music-toggle"><i class="fas fa-music"></i> Bật Nhạc</button>
             <audio id="bg-music" loop>
-                <source src="assets/music/our-love-song.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
+                <source src="assets/music/nhac-tinh-yeu.mp3" type="audio/mpeg">
+                Trình duyệt không hỗ trợ phát nhạc
             </audio>
         </div>
     </header>
@@ -31,63 +31,73 @@
         <section class="countdown-section glass-card">
             <div class="section-header">
                 <i class="fas fa-heartbeat"></i>
-                <h2>Our Journey Together</h2>
+                <h2>Chặng Đường Bên Nhau</h2>
             </div>
-            <div class="anniversary-date">Since December 31, 2023 at 00:13 AM</div>
+            <div class="anniversary-date">Từ ngày 31/12/2023 lúc 00:13</div>
             <div class="countdown-container">
                 <div class="time-box">
                     <span id="years">0</span>
-                    <span class="time-label">Years</span>
+                    <span class="time-label">Năm</span>
                 </div>
                 <div class="time-box">
                     <span id="days">0</span>
-                    <span class="time-label">Days</span>
+                    <span class="time-label">Ngày</span>
                 </div>
                 <div class="time-box">
                     <span id="hours">0</span>
-                    <span class="time-label">Hours</span>
+                    <span class="time-label">Giờ</span>
                 </div>
                 <div class="time-box">
                     <span id="minutes">0</span>
-                    <span class="time-label">Minutes</span>
+                    <span class="time-label">Phút</span>
                 </div>
                 <div class="time-box">
                     <span id="seconds">0</span>
-                    <span class="time-label">Seconds</span>
+                    <span class="time-label">Giây</span>
                 </div>
             </div>
-            <div class="love-quote">"Every love story is beautiful, but ours is my favorite."</div>
+            <div class="love-quote">"Mọi câu chuyện tình đều đẹp, nhưng của chúng mình là đẹp nhất."</div>
         </section>
 
         <section class="pet-section glass-card">
             <div class="section-header">
                 <i class="fas fa-paw"></i>
-                <h2>Our Love Pet</h2>
+                <h2>Thú Cưng Tình Yêu</h2>
             </div>
             <div class="pet-container">
                 <div class="pet" id="virtual-pet">
+                    <div class="pet-ears">
+                        <div class="ear left-ear"></div>
+                        <div class="ear right-ear"></div>
+                    </div>
                     <div class="pet-face">
                         <div class="eyes">
                             <div class="eye left-eye"></div>
                             <div class="eye right-eye"></div>
                         </div>
+                        <div class="cheeks">
+                            <div class="cheek left-cheek"></div>
+                            <div class="cheek right-cheek"></div>
+                        </div>
                         <div class="mouth"></div>
+                        <div class="nose"></div>
                     </div>
                     <div class="pet-body"></div>
+                    <div class="pet-tail"></div>
                     <div class="hearts-around"></div>
                 </div>
                 <div class="pet-controls">
-                    <button class="pet-btn" id="feed-btn"><i class="fas fa-utensils"></i> Feed</button>
-                    <button class="pet-btn" id="play-btn"><i class="fas fa-gamepad"></i> Play</button>
-                    <button class="pet-btn" id="pet-btn"><i class="fas fa-hand-holding-heart"></i> Love</button>
+                    <button class="pet-btn" id="feed-btn"><i class="fas fa-utensils"></i> Cho Ăn</button>
+                    <button class="pet-btn" id="play-btn"><i class="fas fa-gamepad"></i> Chơi Đùa</button>
+                    <button class="pet-btn" id="pet-btn"><i class="fas fa-hand-holding-heart"></i> Vuốt Ve</button>
                 </div>
                 <div class="pet-stats">
                     <div class="stat hunger-stat">
-                        <span><i class="fas fa-hamburger"></i> Hunger: </span>
+                        <span><i class="fas fa-hamburger"></i> Đói: </span>
                         <div class="stat-bar"><div class="stat-fill" id="hunger-fill"></div></div>
                     </div>
                     <div class="stat happiness-stat">
-                        <span><i class="fas fa-laugh-beam"></i> Happiness: </span>
+                        <span><i class="fas fa-laugh-beam"></i> Vui vẻ: </span>
                         <div class="stat-bar"><div class="stat-fill" id="happiness-fill"></div></div>
                     </div>
                 </div>
@@ -97,31 +107,31 @@
         <section class="highlights-section glass-card">
             <div class="section-header">
                 <i class="fas fa-images"></i>
-                <h2>Our Precious Moments</h2>
+                <h2>Khoảnh Khắc Đáng Nhớ</h2>
             </div>
             <div class="media-upload">
                 <form id="upload-form" enctype="multipart/form-data">
                     <label for="media-input" class="upload-label">
                         <i class="fas fa-cloud-upload-alt"></i>
-                        <span>Choose Memories</span>
+                        <span>Chọn Ảnh/Video</span>
                     </label>
                     <input type="file" id="media-input" accept="image/*, video/*" multiple>
-                    <button type="submit" class="upload-btn"><i class="fas fa-upload"></i> Upload Memories</button>
+                    <button type="submit" class="upload-btn"><i class="fas fa-upload"></i> Tải Lên</button>
                 </form>
                 <div class="upload-progress" id="upload-progress"></div>
             </div>
             <div class="media-gallery" id="media-gallery">
-                <!-- Sample memories -->
+                <!-- Ảnh mẫu -->
                 <div class="media-item">
-                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Romantic moment">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Khoảnh khắc lãng mạn">
                     <button class="delete-btn"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="media-item">
-                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Together forever">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bên nhau mãi mãi">
                     <button class="delete-btn"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="media-item">
-                    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Love birds">
+                    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Đôi chim tình yêu">
                     <button class="delete-btn"><i class="fas fa-times"></i></button>
                 </div>
             </div>
@@ -130,30 +140,30 @@
         <section class="love-notes-section glass-card">
             <div class="section-header">
                 <i class="fas fa-sticky-note"></i>
-                <h2>Sweet Messages</h2>
+                <h2>Lời Nhắn Ngọt Ngào</h2>
             </div>
             <div class="notes-container">
                 <div class="note-form">
-                    <textarea id="love-note" placeholder="Write a sweet message..."></textarea>
-                    <button id="add-note-btn"><i class="fas fa-heart"></i> Add Message</button>
+                    <textarea id="love-note" placeholder="Viết lời nhắn yêu thương..."></textarea>
+                    <button id="add-note-btn"><i class="fas fa-heart"></i> Gửi Lời Nhắn</button>
                 </div>
                 <div class="notes-list" id="notes-list">
-                    <!-- Notes will be added here -->
+                    <!-- Lời nhắn sẽ hiển thị ở đây -->
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="glass-footer">
-        <p>Made with <i class="fas fa-heart pulse"></i> for you, my love</p>
+        <p>Làm bằng <i class="fas fa-heart pulse"></i> cho em/anh</p>
         <div class="social-links">
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
     </footer>
 
-    <!-- Confetti effect container -->
+    <!-- Hiệu ứng confetti -->
     <canvas id="confetti-canvas"></canvas>
 
     <script src="scripts/countdown.js"></script>
