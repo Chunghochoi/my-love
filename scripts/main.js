@@ -186,4 +186,64 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function saveNoteToLocalStorage(text) {
-        let notes = JSON.parse(localStorage.getItem('
+        let notes = JSON.parse(localStorage.getItem('loveJourneyNotes')) || [];
+        notes.push(text);
+        localStorage.setItem('loveJourneyNotes', JSON.stringify(notes));
+    }
+    
+    function removeNoteFromLocalStorage(text) {
+        let notes = JSON.parse(localStorage.getItem('loveJourneyNotes')) || [];
+        notes = notes.filter(note => note !== text);
+        localStorage.setItem('loveJourneyNotes', JSON.stringify(notes));
+    }
+    
+    function loadNotes() {
+        const notes = JSON.parse(localStorage.getItem('loveJourneyNotes')) || [];
+        notes.forEach(note => {
+            addNote(note);
+        });
+    }
+    
+    // Add some sample images on first visit
+    if (!localStorage.getItem('loveJourneyMedia') && mediaGallery.children.length === 0) {
+        const sampleImages = [
+            'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+            'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+        ];
+        
+        sampleImages.forEach(src => {
+            const mediaItem = document.createElement('div');
+            mediaItem.className = 'media-item';
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = 'Sample memory';
+            mediaItem.appendChild(img);
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '<i class="fas fa-times"></i>';
+            deleteBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mediaItem.remove();
+            });
+            mediaItem.appendChild(deleteBtn);
+            
+            mediaGallery.appendChild(mediaItem);
+        });
+    }
+    
+    // Add some sample notes on first visit
+    if (!localStorage.getItem('loveJourneyNotes') && notesList.children.length === 0) {
+        const sampleNotes = [
+            "Every moment with you is special",
+            "You make my heart smile",
+            "I love you more than words can express"
+        ];
+        
+        sampleNotes.forEach(note => {
+            addNote(note);
+        });
+    }
+});
